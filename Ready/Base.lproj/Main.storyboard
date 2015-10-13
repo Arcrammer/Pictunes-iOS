@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="vss-oW-FEz">
+                                <rect key="frame" x="213" y="52" width="175" height="175"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="ZT9-Pm-WzS"/>
+                                    <constraint firstAttribute="width" constant="175" id="bAT-KN-u9m"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTM-cf-vJP">
+                                <rect key="frame" x="180" y="259" width="240" height="285"/>
+                                <subviews>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-I4-36n" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="102" width="215" height="50"/>
+                                        <animations/>
+                                        <color key="tintColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="vC9-bG-qR5"/>
+                                            <constraint firstAttribute="width" constant="215" id="zYX-23-9fl"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.14861739309999999" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                        <connections>
+                                            <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="mf5-DR-dwY"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nse-X7-I8t" customClass="ARButton" customModule="Ready" customModuleProvider="target">
+                                        <rect key="frame" x="57" y="216" width="125" height="50"/>
+                                        <animations/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="7uZ-IS-yAb"/>
+                                            <constraint firstAttribute="width" constant="125" id="bVC-ft-E7Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tapColour">
+                                                <color key="value" red="0.51764705882352935" green="0.058823529411764705" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="authenticateUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="COs-nX-cB4"/>
+                                        </connections>
+                                    </button>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GK3-EC-dwz" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                        <rect key="frame" x="13" y="20" width="215" height="50"/>
+                                        <animations/>
+                                        <color key="tintColor" red="0.85098039215686272" green="0.10196078431372549" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="Thq-zd-OXm"/>
+                                            <constraint firstAttribute="width" constant="215" id="Vae-FF-gLE"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.14861739309210525" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <connections>
+                                            <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="UDG-9n-cZt"/>
+                                        </connections>
+                                    </textField>
+                                </subviews>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="nse-X7-I8t" firstAttribute="top" secondItem="SzV-I4-36n" secondAttribute="bottom" constant="64" id="0s4-RS-s0t"/>
+                                    <constraint firstItem="GK3-EC-dwz" firstAttribute="top" secondItem="dTM-cf-vJP" secondAttribute="top" constant="20" id="5cn-aa-8RY"/>
+                                    <constraint firstAttribute="height" constant="285" id="AwC-5C-Hvd"/>
+                                    <constraint firstAttribute="width" constant="240" id="FQ5-b3-xNL"/>
+                                    <constraint firstItem="SzV-I4-36n" firstAttribute="centerX" secondItem="dTM-cf-vJP" secondAttribute="centerX" id="IHn-qR-cld"/>
+                                    <constraint firstItem="nse-X7-I8t" firstAttribute="centerX" secondItem="dTM-cf-vJP" secondAttribute="centerX" id="a7Q-ig-xeP"/>
+                                    <constraint firstItem="SzV-I4-36n" firstAttribute="top" secondItem="GK3-EC-dwz" secondAttribute="bottom" constant="32" id="dm0-MH-FNC"/>
+                                    <constraint firstItem="GK3-EC-dwz" firstAttribute="centerX" secondItem="dTM-cf-vJP" secondAttribute="centerX" id="rUs-vi-Irj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dTM-cf-vJP" firstAttribute="top" secondItem="vss-oW-FEz" secondAttribute="bottom" constant="32" id="20W-1p-7nr"/>
+                            <constraint firstItem="vss-oW-FEz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="EO0-1g-Rec"/>
+                            <constraint firstItem="dTM-cf-vJP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nnc-bF-zTU"/>
+                            <constraint firstItem="vss-oW-FEz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rhx-pQ-cZy"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="continueButton" destination="nse-X7-I8t" id="mgg-XY-0Vl"/>
+                        <outlet property="fieldContainer" destination="dTM-cf-vJP" id="dWj-Nx-RJL"/>
+                        <outlet property="fieldContainerTopConstraint" destination="20W-1p-7nr" id="Biz-Vp-Zhl"/>
+                        <outlet property="fullNameField" destination="GK3-EC-dwz" id="QVq-hS-LmJ"/>
+                        <outlet property="fullNameFieldWidth" destination="Vae-FF-gLE" id="561-0H-LhB"/>
+                        <outlet property="logoTopConstraint" destination="EO0-1g-Rec" id="wAM-Kv-STF"/>
+                        <outlet property="passwordField" destination="SzV-I4-36n" id="StM-Mt-eKm"/>
+                        <outlet property="passwordFieldWidth" destination="zYX-23-9fl" id="zdO-F8-8Al"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="325" y="359"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Logo" width="500" height="500"/>
+    </resources>
+</document>
