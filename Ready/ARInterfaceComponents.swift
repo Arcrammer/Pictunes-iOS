@@ -8,6 +8,12 @@
 
 import UIKit
 
+extension Int {
+    var degreesToRadians: CGFloat {
+        return CGFloat(self) * CGFloat(M_PI) / 360.0
+    }
+}
+
 class ARBottomLineField: UITextField {
     required init!(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -118,6 +124,7 @@ class ARPancakeButton: UIControl {
     let top = CALayer(),
     middle = CALayer(),
     bottom = CALayer()
+    var menuVisible: Bool? = false
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -125,12 +132,19 @@ class ARPancakeButton: UIControl {
     override required init(frame: CGRect) {
         super.init(frame: frame)
         
-        let bar = CGRectMake(0, 0, 45, 5)
+        let bar = CGRectMake(-22.5, 0, 45, 5)
         self.top.frame = bar
         self.middle.frame = bar
         self.middle.position.y += 15
         self.bottom.frame = bar
         self.bottom.position.y += 30
+        
+        self.top.anchorPoint.x = 0.0
+        self.top.anchorPoint.y = 0.75
+        self.middle.anchorPoint.x = 0.0
+        self.middle.anchorPoint.y = 0.5
+        self.bottom.anchorPoint.x = 0.0
+        self.bottom.anchorPoint.y = 0.25
         
         self.top.backgroundColor = UIColor.darkGrayColor().CGColor
         self.middle.backgroundColor = UIColor.darkGrayColor().CGColor
@@ -138,5 +152,45 @@ class ARPancakeButton: UIControl {
         self.layer.addSublayer(self.top)
         self.layer.addSublayer(self.middle)
         self.layer.addSublayer(self.bottom)
+        
+        addTarget(self, action: "fold", forControlEvents: UIControlEvents.TouchDown)
+    }
+    
+    func fold() {
+        if self.menuVisible == false {
+            // Fold the Bars
+            self.top.transform = CATransform3DRotate(self.top.transform, -90.degreesToRadians, 0.0, 0.0, -1.0)
+            self.bottom.transform = CATransform3DRotate(self.bottom.transform, 90.degreesToRadians, 0.0, 0.0, -1.0)
+            
+            UIView.animateWithDuration(0.05, animations: {
+                () -> Void in
+                
+                // Move the Bars Over
+                self.top.position.x += 6.5
+                self.bottom.position.x += 6.5
+                
+                // Fade the Middle Bar
+                self.middle.backgroundColor = UIColor(white: 1, alpha: 0).CGColor
+            })
+            
+            self.menuVisible = true
+        } else {
+            // Unfold the Bars
+            self.top.transform = CATransform3DRotate(self.top.transform, -90.degreesToRadians, 0.0, 0.0, 1.0)
+            self.bottom.transform = CATransform3DRotate(self.bottom.transform, 90.degreesToRadians, 0.0, 0.0, 1.0)
+            
+            UIView.animateWithDuration(0.05, animations: {
+                () -> Void in
+                
+                // Move the Bars Over
+                self.top.position.x -= 6.5
+                self.bottom.position.x -= 6.5
+                
+                // Fade the Middle Bar
+                self.middle.backgroundColor = UIColor.darkGrayColor().CGColor
+            })
+            
+            self.menuVisible = false
+        }
     }
 }

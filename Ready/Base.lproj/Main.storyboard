@@ -96,13 +96,22 @@
                                     <constraint firstItem="GK3-EC-dwz" firstAttribute="centerX" secondItem="dTM-cf-vJP" secondAttribute="centerX" id="rUs-vi-Irj"/>
                                 </constraints>
                             </view>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gst-kg-eti">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="dTM-cf-vJP" firstAttribute="top" secondItem="vss-oW-FEz" secondAttribute="bottom" constant="32" id="20W-1p-7nr"/>
                             <constraint firstItem="vss-oW-FEz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="EO0-1g-Rec"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gst-kg-eti" secondAttribute="bottom" id="Glg-VY-Ewq"/>
+                            <constraint firstItem="gst-kg-eti" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Hmq-8w-cYl"/>
                             <constraint firstItem="dTM-cf-vJP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nnc-bF-zTU"/>
+                            <constraint firstAttribute="trailing" secondItem="gst-kg-eti" secondAttribute="trailing" id="RJA-lv-FBG"/>
+                            <constraint firstItem="gst-kg-eti" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="quY-Q4-QTb"/>
                             <constraint firstItem="vss-oW-FEz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rhx-pQ-cZy"/>
                         </constraints>
                     </view>
@@ -113,6 +122,7 @@
                         <outlet property="fullNameField" destination="GK3-EC-dwz" id="QVq-hS-LmJ"/>
                         <outlet property="fullNameFieldWidth" destination="Vae-FF-gLE" id="561-0H-LhB"/>
                         <outlet property="logoTopConstraint" destination="EO0-1g-Rec" id="wAM-Kv-STF"/>
+                        <outlet property="menu" destination="gst-kg-eti" id="AT2-Hh-u8g"/>
                         <outlet property="passwordField" destination="SzV-I4-36n" id="StM-Mt-eKm"/>
                         <outlet property="passwordFieldWidth" destination="zYX-23-9fl" id="zdO-F8-8Al"/>
                     </connections>
