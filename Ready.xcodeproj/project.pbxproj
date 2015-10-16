@@ -10,11 +10,13 @@
 		1139A82F1BCA9959004A0BCE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A82E1BCA9959004A0BCE /* AppDelegate.swift */; };
 		1139A8311BCA9959004A0BCE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A8301BCA9959004A0BCE /* ViewController.swift */; };
 		1139A8341BCA9959004A0BCE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1139A8321BCA9959004A0BCE /* Main.storyboard */; };
-		1139A8361BCA9959004A0BCE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1139A8351BCA9959004A0BCE /* Assets.xcassets */; };
 		1139A8391BCA9959004A0BCE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1139A8371BCA9959004A0BCE /* LaunchScreen.storyboard */; };
 		1139A8441BCA9959004A0BCE /* ReadyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A8431BCA9959004A0BCE /* ReadyTests.swift */; };
 		1139A84F1BCA9959004A0BCE /* ReadyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A84E1BCA9959004A0BCE /* ReadyUITests.swift */; };
-		1139A85D1BCAA4C1004A0BCE /* ARInterfaceComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */; settings = {ASSET_TAGS = (); }; };
+		1139A85D1BCAA4C1004A0BCE /* ARInterfaceComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */; };
+		113FD9731BD19897007E609C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113FD9721BD19897007E609C /* Assets.xcassets */; };
+		115015331BD186F500920415 /* ImageChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115015321BD186F500920415 /* ImageChoiceView.xib */; };
+		1180F69D1BCE9A6800408EE7 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,6 @@
 		1139A82E1BCA9959004A0BCE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1139A8301BCA9959004A0BCE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1139A8331BCA9959004A0BCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1139A8351BCA9959004A0BCE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1139A8381BCA9959004A0BCE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1139A83A1BCA9959004A0BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1139A83F1BCA9959004A0BCE /* ReadyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +50,9 @@
 		1139A84E1BCA9959004A0BCE /* ReadyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyUITests.swift; sourceTree = "<group>"; };
 		1139A8501BCA9959004A0BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARInterfaceComponents.swift; sourceTree = "<group>"; };
+		113FD9721BD19897007E609C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		115015321BD186F500920415 /* ImageChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageChoiceView.xib; sourceTree = "<group>"; };
+		1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +105,11 @@
 			children = (
 				1139A82E1BCA9959004A0BCE /* AppDelegate.swift */,
 				1139A8301BCA9959004A0BCE /* ViewController.swift */,
+				1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */,
 				1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */,
 				1139A8321BCA9959004A0BCE /* Main.storyboard */,
-				1139A8351BCA9959004A0BCE /* Assets.xcassets */,
+				115015321BD186F500920415 /* ImageChoiceView.xib */,
+				113FD9721BD19897007E609C /* Assets.xcassets */,
 				1139A8371BCA9959004A0BCE /* LaunchScreen.storyboard */,
 				1139A83A1BCA9959004A0BCE /* Info.plist */,
 			);
@@ -195,6 +201,7 @@
 				TargetAttributes = {
 					1139A82A1BCA9959004A0BCE = {
 						CreatedOnToolsVersion = 7.0.1;
+						DevelopmentTeam = 63B57N68Z8;
 					};
 					1139A83E1BCA9959004A0BCE = {
 						CreatedOnToolsVersion = 7.0.1;
@@ -232,7 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				1139A8391BCA9959004A0BCE /* LaunchScreen.storyboard in Resources */,
-				1139A8361BCA9959004A0BCE /* Assets.xcassets in Resources */,
+				115015331BD186F500920415 /* ImageChoiceView.xib in Resources */,
+				113FD9731BD19897007E609C /* Assets.xcassets in Resources */,
 				1139A8341BCA9959004A0BCE /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -260,6 +268,7 @@
 			files = (
 				1139A8311BCA9959004A0BCE /* ViewController.swift in Sources */,
 				1139A82F1BCA9959004A0BCE /* AppDelegate.swift in Sources */,
+				1180F69D1BCE9A6800408EE7 /* RegistrationViewController.swift in Sources */,
 				1139A85D1BCAA4C1004A0BCE /* ARInterfaceComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,10 +409,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Ready/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hoa.Ready;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -411,10 +423,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Ready/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = hoa.Ready;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

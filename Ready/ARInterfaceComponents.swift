@@ -7,6 +7,11 @@
 //
 
 import UIKit
+import MobileCoreServices
+
+protocol ARImageChoiceViewNotifier {
+    func choiceMade()
+}
 
 extension Int {
     var degreesToRadians: CGFloat {
@@ -132,7 +137,7 @@ class ARPancakeButton: UIControl {
     override required init(frame: CGRect) {
         super.init(frame: frame)
         
-        let bar = CGRectMake(-22.5, 0, 45, 5)
+        let bar = CGRectMake(-22.5, 0, 45, 2.5)
         self.top.frame = bar
         self.middle.frame = bar
         self.middle.position.y += 15
@@ -158,6 +163,11 @@ class ARPancakeButton: UIControl {
     
     func fold() {
         if self.menuVisible == false {
+            // Make the Bars White
+            self.top.backgroundColor = UIColor.whiteColor().CGColor
+            self.middle.backgroundColor = UIColor.whiteColor().CGColor
+            self.bottom.backgroundColor = UIColor.whiteColor().CGColor
+            
             // Fold the Bars
             self.top.transform = CATransform3DRotate(self.top.transform, -90.degreesToRadians, 0.0, 0.0, -1.0)
             self.bottom.transform = CATransform3DRotate(self.bottom.transform, 90.degreesToRadians, 0.0, 0.0, -1.0)
@@ -175,6 +185,11 @@ class ARPancakeButton: UIControl {
             
             self.menuVisible = true
         } else {
+            // Make the Bars White
+            self.top.backgroundColor = UIColor.darkGrayColor().CGColor
+            self.middle.backgroundColor = UIColor.darkGrayColor().CGColor
+            self.bottom.backgroundColor = UIColor.darkGrayColor().CGColor
+            
             // Unfold the Bars
             self.top.transform = CATransform3DRotate(self.top.transform, -90.degreesToRadians, 0.0, 0.0, 1.0)
             self.bottom.transform = CATransform3DRotate(self.bottom.transform, 90.degreesToRadians, 0.0, 0.0, 1.0)
@@ -192,5 +207,40 @@ class ARPancakeButton: UIControl {
             
             self.menuVisible = false
         }
+    }
+}
+
+class ARImageChoiceView: UIView {
+    /* Properties */
+    var viewFromFile: UIView?,
+    registrationViewController: RegistrationViewController?
+    
+    @IBAction func uploadImage(sender: AnyObject) {
+        print("Choose Image")
+    }
+    
+    @IBAction func openCamera(sender: AnyObject) {
+        print("Open Camera")
+    }
+    
+    @IBAction func dismissSelf(sender: AnyObject) {
+        // The 'Close' Button was Tapped
+        self.registrationViewController!.dismissChoiceView()
+    }
+    
+    /* Methods */
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        // Add the View from 'ImageChoiceView.xib' as a Subview
+        if let viewFromXib = UINib(nibName: "ImageChoiceView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as? UIView {
+            self.viewFromFile = viewFromXib
+            self.viewFromFile!.frame = self.frame
+            self.addSubview(self.viewFromFile!)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

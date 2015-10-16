@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HgG-mh-DZL">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -27,7 +28,34 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTM-cf-vJP">
                                 <rect key="frame" x="180" y="259" width="240" height="285"/>
                                 <subviews>
-                                    <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-I4-36n" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                    <view opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m0o-8A-x0B">
+                                        <rect key="frame" x="23" y="-73" width="54" height="28"/>
+                                        <animations/>
+                                        <gestureRecognizers/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nse-X7-I8t" customClass="ARButton" customModule="Ready" customModuleProvider="target">
+                                        <rect key="frame" x="37" y="216" width="165" height="65"/>
+                                        <animations/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="65" id="7uZ-IS-yAb"/>
+                                            <constraint firstAttribute="width" constant="165" id="bVC-ft-E7Q"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Continue">
+                                            <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="tapColour">
+                                                <color key="value" red="0.51764705882352935" green="0.058823529411764705" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="authenticateUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="COs-nX-cB4"/>
+                                        </connections>
+                                    </button>
+                                    <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="SzV-I4-36n" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
                                         <rect key="frame" x="13" y="102" width="215" height="50"/>
                                         <animations/>
                                         <color key="tintColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
@@ -43,29 +71,7 @@
                                             <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="mf5-DR-dwY"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nse-X7-I8t" customClass="ARButton" customModule="Ready" customModuleProvider="target">
-                                        <rect key="frame" x="57" y="216" width="125" height="50"/>
-                                        <animations/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="7uZ-IS-yAb"/>
-                                            <constraint firstAttribute="width" constant="125" id="bVC-ft-E7Q"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <state key="normal" title="Continue">
-                                            <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="tapColour">
-                                                <color key="value" red="0.51764705882352935" green="0.058823529411764705" blue="0.082352941176470587" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="authenticateUser:" destination="BYZ-38-t0r" eventType="touchUpInside" id="COs-nX-cB4"/>
-                                        </connections>
-                                    </button>
-                                    <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GK3-EC-dwz" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                    <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GK3-EC-dwz" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
                                         <rect key="frame" x="13" y="20" width="215" height="50"/>
                                         <animations/>
                                         <color key="tintColor" red="0.85098039215686272" green="0.10196078431372549" blue="0.16470588235294117" alpha="1" colorSpace="calibratedRGB"/>
@@ -79,6 +85,7 @@
                                         <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                         <connections>
                                             <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="UDG-9n-cZt"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="GUM-wy-xyo"/>
                                         </connections>
                                     </textField>
                                 </subviews>
@@ -96,43 +103,319 @@
                                     <constraint firstItem="GK3-EC-dwz" firstAttribute="centerX" secondItem="dTM-cf-vJP" secondAttribute="centerX" id="rUs-vi-Irj"/>
                                 </constraints>
                             </view>
-                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gst-kg-eti">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BXQ-dl-Dcn">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5XU-qE-wic">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="24"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <animations/>
+                                    <gestureRecognizers/>
+                                </view>
                                 <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.0016772598870000001" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="NoJ-CJ-RIi"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" delaysContentTouches="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lTI-IY-64F">
+                                <rect key="frame" x="0.0" y="24" width="600" height="576"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="sectionIndexBackgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <visualEffectView key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="D1C-Cd-chv">
+                                    <rect key="frame" x="0.0" y="72" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6DA-iC-gDq">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <animations/>
+                                        <gestureRecognizers/>
+                                    </view>
+                                    <animations/>
+                                    <color key="backgroundColor" red="1" green="0.0016772598870000001" blue="0.0" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                    <blurEffect style="dark"/>
+                                    <connections>
+                                        <outletCollection property="gestureRecognizers" destination="MHt-xa-dgd" appends="YES" id="wCJ-df-pyj"/>
+                                    </connections>
+                                </visualEffectView>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="choiceCell" id="oA5-6T-K7J">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oA5-6T-K7J" id="Dpp-df-EzR">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <sections/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="1wZ-fV-0r6"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="8Ce-xD-mxx"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="lTI-IY-64F" secondAttribute="trailing" id="15Z-PG-oQT"/>
                             <constraint firstItem="dTM-cf-vJP" firstAttribute="top" secondItem="vss-oW-FEz" secondAttribute="bottom" constant="32" id="20W-1p-7nr"/>
                             <constraint firstItem="vss-oW-FEz" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="32" id="EO0-1g-Rec"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="gst-kg-eti" secondAttribute="bottom" id="Glg-VY-Ewq"/>
-                            <constraint firstItem="gst-kg-eti" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Hmq-8w-cYl"/>
+                            <constraint firstAttribute="trailing" secondItem="BXQ-dl-Dcn" secondAttribute="trailing" id="NXA-hO-P6M"/>
                             <constraint firstItem="dTM-cf-vJP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nnc-bF-zTU"/>
-                            <constraint firstAttribute="trailing" secondItem="gst-kg-eti" secondAttribute="trailing" id="RJA-lv-FBG"/>
-                            <constraint firstItem="gst-kg-eti" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="quY-Q4-QTb"/>
+                            <constraint firstItem="BXQ-dl-Dcn" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="YiZ-GT-PXK"/>
+                            <constraint firstItem="lTI-IY-64F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="j19-Td-eQn"/>
                             <constraint firstItem="vss-oW-FEz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rhx-pQ-cZy"/>
+                            <constraint firstItem="BXQ-dl-Dcn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="smM-6s-oRf"/>
+                            <constraint firstItem="lTI-IY-64F" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="4" id="v8C-EN-R7C"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="lTI-IY-64F" secondAttribute="bottom" id="wBa-d5-FXm"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="DQJ-9e-zJE"/>
                     <connections>
                         <outlet property="continueButton" destination="nse-X7-I8t" id="mgg-XY-0Vl"/>
                         <outlet property="fieldContainer" destination="dTM-cf-vJP" id="dWj-Nx-RJL"/>
                         <outlet property="fieldContainerTopConstraint" destination="20W-1p-7nr" id="Biz-Vp-Zhl"/>
                         <outlet property="fullNameField" destination="GK3-EC-dwz" id="QVq-hS-LmJ"/>
                         <outlet property="fullNameFieldWidth" destination="Vae-FF-gLE" id="561-0H-LhB"/>
+                        <outlet property="logoHeightConstraint" destination="ZT9-Pm-WzS" id="vXc-H0-Gv0"/>
                         <outlet property="logoTopConstraint" destination="EO0-1g-Rec" id="wAM-Kv-STF"/>
-                        <outlet property="menu" destination="gst-kg-eti" id="AT2-Hh-u8g"/>
+                        <outlet property="logoWidthConstraint" destination="bAT-KN-u9m" id="BnO-oH-1MC"/>
                         <outlet property="passwordField" destination="SzV-I4-36n" id="StM-Mt-eKm"/>
                         <outlet property="passwordFieldWidth" destination="zYX-23-9fl" id="zdO-F8-8Al"/>
+                        <outlet property="welcomeMenu" destination="lTI-IY-64F" id="erK-EV-Och"/>
+                        <outlet property="welcomeMenuStatusBarBackground" destination="BXQ-dl-Dcn" id="eAS-On-Tal"/>
+                        <segue destination="gcl-bz-L9Y" kind="show" identifier="registrationViewSegue" id="eQq-KE-ijr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="MHt-xa-dgd">
+                    <connections>
+                        <action selector="dismissWelcomeMenu:" destination="BYZ-38-t0r" id="o5h-Qn-Tai"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="325" y="359"/>
+            <point key="canvasLocation" x="1126" y="355"/>
+        </scene>
+        <!--Registration View Controller-->
+        <scene sceneID="z4c-M5-vtu">
+            <objects>
+                <viewController id="gcl-bz-L9Y" customClass="RegistrationViewController" customModule="Ready" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="yUw-rY-gXX"/>
+                        <viewControllerLayoutGuide type="bottom" id="GiG-YZ-3mh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ulL-Tk-v3F">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-bU-uMG">
+                                <rect key="frame" x="180" y="0.0" width="240" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="49L-1u-0Wu">
+                                        <rect key="frame" x="0.0" y="0.0" width="241" height="600"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Plus" translatesAutoresizingMaskIntoConstraints="NO" id="Bcd-W1-bAq">
+                                                <rect key="frame" x="58" y="64" width="125" height="125"/>
+                                                <animations/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="125" id="48v-yp-03n"/>
+                                                    <constraint firstAttribute="height" constant="125" id="dqK-3E-rbj"/>
+                                                </constraints>
+                                            </imageView>
+                                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="xKe-ac-DxF" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                                <rect key="frame" x="13" y="205" width="215" height="50"/>
+                                                <animations/>
+                                                <color key="tintColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="215" id="8fj-cI-INs"/>
+                                                    <constraint firstAttribute="height" constant="50" id="Njv-2j-fdH"/>
+                                                </constraints>
+                                                <color key="textColor" white="0.14861739309999999" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                                <connections>
+                                                    <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="7Qh-uS-1Ed"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="w57-VQ-5Zy"/>
+                                                </connections>
+                                            </textField>
+                                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Trl-iX-yeR" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                                <rect key="frame" x="13" y="287" width="215" height="50"/>
+                                                <animations/>
+                                                <color key="tintColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="215" id="Jf5-OF-PBP"/>
+                                                    <constraint firstAttribute="height" constant="50" id="k2F-xO-zDX"/>
+                                                </constraints>
+                                                <color key="textColor" white="0.14861739309999999" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                <connections>
+                                                    <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="CIy-Fk-Qa7"/>
+                                                    <outlet property="delegate" destination="BYZ-38-t0r" id="kgK-Rg-mE4"/>
+                                                </connections>
+                                            </textField>
+                                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="leJ-jM-jRe" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                                <rect key="frame" x="13" y="369" width="215" height="50"/>
+                                                <animations/>
+                                                <color key="tintColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="215" id="F87-4v-SdA"/>
+                                                    <constraint firstAttribute="height" constant="50" id="KS6-72-op9"/>
+                                                </constraints>
+                                                <color key="textColor" white="0.14861739309999999" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="u0h-gZ-hoc"/>
+                                                </connections>
+                                            </textField>
+                                            <textField autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Verify" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oyj-MJ-EPd" customClass="ARBottomLineField" customModule="Ready" customModuleProvider="target">
+                                                <rect key="frame" x="13" y="451" width="215" height="50"/>
+                                                <animations/>
+                                                <color key="tintColor" red="0.85098039219999999" green="0.1019607843" blue="0.1647058824" alpha="1" colorSpace="calibratedRGB"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="215" id="TbS-Fp-GOc"/>
+                                                    <constraint firstAttribute="height" constant="50" id="USp-pr-TtH"/>
+                                                </constraints>
+                                                <color key="textColor" white="0.14861739309999999" alpha="1" colorSpace="calibratedWhite"/>
+                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                <connections>
+                                                    <action selector="liftView:" destination="BYZ-38-t0r" eventType="touchDown" id="JQR-sa-YVo"/>
+                                                </connections>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4i6-VT-TuG" customClass="ARButton" customModule="Ready" customModuleProvider="target">
+                                                <rect key="frame" x="38" y="565" width="165" height="65"/>
+                                                <animations/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="165" id="bNj-Nn-hLI"/>
+                                                    <constraint firstAttribute="height" constant="65" id="fLu-R2-MtD"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="15"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <state key="normal" title="Create">
+                                                    <color key="titleColor" white="0.25" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="tapColour">
+                                                        <color key="value" red="0.51764705879999995" green="0.058823529409999999" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="attemptToCreateAccount:" destination="gcl-bz-L9Y" eventType="touchUpInside" id="lUg-CM-bWq"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <animations/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="leJ-jM-jRe" firstAttribute="top" secondItem="Trl-iX-yeR" secondAttribute="bottom" constant="32" id="0Jy-E5-yW1"/>
+                                            <constraint firstItem="oyj-MJ-EPd" firstAttribute="centerX" secondItem="49L-1u-0Wu" secondAttribute="centerX" id="9CX-uP-5Yh"/>
+                                            <constraint firstItem="xKe-ac-DxF" firstAttribute="centerX" secondItem="49L-1u-0Wu" secondAttribute="centerX" id="RKi-42-sHN"/>
+                                            <constraint firstItem="Trl-iX-yeR" firstAttribute="top" secondItem="xKe-ac-DxF" secondAttribute="bottom" constant="32" id="RaP-LM-Oq7"/>
+                                            <constraint firstItem="xKe-ac-DxF" firstAttribute="top" secondItem="Bcd-W1-bAq" secondAttribute="bottom" constant="16" id="XQM-Yz-YmM"/>
+                                            <constraint firstItem="Bcd-W1-bAq" firstAttribute="centerX" secondItem="49L-1u-0Wu" secondAttribute="centerX" id="XTW-YV-mTe"/>
+                                            <constraint firstItem="leJ-jM-jRe" firstAttribute="centerX" secondItem="49L-1u-0Wu" secondAttribute="centerX" id="c4x-pK-9dG"/>
+                                            <constraint firstItem="oyj-MJ-EPd" firstAttribute="top" secondItem="leJ-jM-jRe" secondAttribute="bottom" constant="32" id="cNL-ZQ-Zg3"/>
+                                            <constraint firstItem="4i6-VT-TuG" firstAttribute="top" secondItem="oyj-MJ-EPd" secondAttribute="bottom" constant="64" id="jxk-JB-uAY"/>
+                                            <constraint firstItem="Bcd-W1-bAq" firstAttribute="top" secondItem="49L-1u-0Wu" secondAttribute="top" constant="64" id="khP-0b-tCK"/>
+                                            <constraint firstItem="4i6-VT-TuG" firstAttribute="centerX" secondItem="49L-1u-0Wu" secondAttribute="centerX" id="lVv-h2-O0V"/>
+                                            <constraint firstItem="Trl-iX-yeR" firstAttribute="centerX" secondItem="49L-1u-0Wu" secondAttribute="centerX" id="yE1-8W-0BA"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="K9U-48-oXR" appends="YES" id="4e3-XE-kNk"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="49L-1u-0Wu" secondAttribute="bottom" id="1d4-SK-mhf"/>
+                                    <constraint firstAttribute="width" constant="240" id="OVU-Up-sde"/>
+                                    <constraint firstAttribute="trailing" secondItem="49L-1u-0Wu" secondAttribute="trailing" id="WMB-wd-ELd"/>
+                                    <constraint firstItem="49L-1u-0Wu" firstAttribute="top" secondItem="RqF-bU-uMG" secondAttribute="top" id="aKh-Gf-Dzm"/>
+                                    <constraint firstItem="49L-1u-0Wu" firstAttribute="centerY" secondItem="RqF-bU-uMG" secondAttribute="centerY" id="j1b-gE-Jlu"/>
+                                    <constraint firstItem="49L-1u-0Wu" firstAttribute="leading" secondItem="RqF-bU-uMG" secondAttribute="leading" id="nl4-la-McW"/>
+                                    <constraint firstItem="49L-1u-0Wu" firstAttribute="centerX" secondItem="RqF-bU-uMG" secondAttribute="centerX" id="u3k-zq-E9E"/>
+                                </constraints>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmR-e4-b2N">
+                                <rect key="frame" x="20" y="28" width="100" height="22"/>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="vV3-rJ-bzx"/>
+                                    <constraint firstAttribute="width" constant="100" id="xMg-5c-kCT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="   Back" image="Left Arrow">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissView:" destination="gcl-bz-L9Y" eventType="touchUpInside" id="igf-x8-8Gr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="RqF-bU-uMG" firstAttribute="centerX" secondItem="ulL-Tk-v3F" secondAttribute="centerX" id="7KY-Mz-XUQ"/>
+                            <constraint firstItem="cmR-e4-b2N" firstAttribute="top" secondItem="yUw-rY-gXX" secondAttribute="bottom" constant="8" id="bs1-im-eVQ"/>
+                            <constraint firstItem="GiG-YZ-3mh" firstAttribute="top" secondItem="RqF-bU-uMG" secondAttribute="bottom" id="uUc-tm-zFg"/>
+                            <constraint firstItem="RqF-bU-uMG" firstAttribute="top" secondItem="ulL-Tk-v3F" secondAttribute="topMargin" id="uom-0W-Whf"/>
+                            <constraint firstItem="cmR-e4-b2N" firstAttribute="leading" secondItem="ulL-Tk-v3F" secondAttribute="leadingMargin" id="yHA-PZ-Z1E"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailField" destination="xKe-ac-DxF" id="L9T-Bu-dlx"/>
+                        <outlet property="fullNameField" destination="Trl-iX-yeR" id="FZ5-nc-2zn"/>
+                        <outlet property="passwordField" destination="leJ-jM-jRe" id="NGa-wP-Qxx"/>
+                        <outlet property="profileImage" destination="Bcd-W1-bAq" id="me4-2B-PEM"/>
+                        <outlet property="scrollViewFieldsContainerBottomConstraint" destination="1d4-SK-mhf" id="7X7-s3-HhZ"/>
+                        <outlet property="verificationField" destination="oyj-MJ-EPd" id="gJA-JK-QE5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qQs-h3-iyH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="K9U-48-oXR">
+                    <connections>
+                        <action selector="chooseImage:" destination="gcl-bz-L9Y" id="jG2-t7-mWd"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="1963" y="355"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Y4H-rV-FKj">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="HgG-mh-DZL" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4EJ-C4-1Kc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="GVm-o1-Ldy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E9U-8d-tIt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="314" y="355"/>
         </scene>
     </scenes>
     <resources>
+        <image name="Left Arrow" width="13" height="21"/>
         <image name="Logo" width="500" height="500"/>
+        <image name="Plus" width="256" height="256"/>
     </resources>
 </document>
