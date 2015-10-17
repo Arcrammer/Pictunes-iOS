@@ -18,7 +18,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     @IBOutlet weak var logoTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var fullNameField: ARBottomLineField!
     @IBOutlet weak var passwordField: ARBottomLineField!
-    @IBOutlet weak var continueButton: ARButton!
     @IBOutlet weak var fieldContainer: UIView!
     @IBOutlet weak var fieldContainerTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var fullNameFieldWidth: NSLayoutConstraint!
@@ -221,7 +220,14 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         // Revert to the Inactive Colour
         selectedCell.selected = false
         
-        self.performSegueWithIdentifier("registrationViewSegue", sender: self)
+        switch indexPath.row {
+            case 0:
+            self.performSegueWithIdentifier("registrationViewSegue", sender: self)
+            case 1:
+            self.performSegueWithIdentifier("forgottenPasswordViewSegue", sender: self)
+            default:
+            self.dismissWelcomeMenu(self)
+        }
     }
     
     /* UITableViewDataSource */

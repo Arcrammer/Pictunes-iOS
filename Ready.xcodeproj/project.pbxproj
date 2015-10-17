@@ -15,7 +15,9 @@
 		1139A84F1BCA9959004A0BCE /* ReadyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A84E1BCA9959004A0BCE /* ReadyUITests.swift */; };
 		1139A85D1BCAA4C1004A0BCE /* ARInterfaceComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */; };
 		113FD9731BD19897007E609C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 113FD9721BD19897007E609C /* Assets.xcassets */; };
+		114E74611BD2BF050098D630 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114E74601BD2BF050098D630 /* FeedViewController.swift */; };
 		115015331BD186F500920415 /* ImageChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115015321BD186F500920415 /* ImageChoiceView.xib */; };
+		116B55321BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116B55311BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift */; };
 		1180F69D1BCE9A6800408EE7 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,7 +53,9 @@
 		1139A8501BCA9959004A0BCE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ARInterfaceComponents.swift; sourceTree = "<group>"; };
 		113FD9721BD19897007E609C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		114E74601BD2BF050098D630 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		115015321BD186F500920415 /* ImageChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageChoiceView.xib; sourceTree = "<group>"; };
+		116B55311BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgottenPasswordViewController.swift; sourceTree = "<group>"; };
 		1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,6 +110,8 @@
 				1139A82E1BCA9959004A0BCE /* AppDelegate.swift */,
 				1139A8301BCA9959004A0BCE /* ViewController.swift */,
 				1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */,
+				116B55311BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift */,
+				114E74601BD2BF050098D630 /* FeedViewController.swift */,
 				1139A85C1BCAA4C1004A0BCE /* ARInterfaceComponents.swift */,
 				1139A8321BCA9959004A0BCE /* Main.storyboard */,
 				115015321BD186F500920415 /* ImageChoiceView.xib */,
@@ -270,6 +276,8 @@
 				1139A82F1BCA9959004A0BCE /* AppDelegate.swift in Sources */,
 				1180F69D1BCE9A6800408EE7 /* RegistrationViewController.swift in Sources */,
 				1139A85D1BCAA4C1004A0BCE /* ARInterfaceComponents.swift in Sources */,
+				114E74611BD2BF050098D630 /* FeedViewController.swift in Sources */,
+				116B55321BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

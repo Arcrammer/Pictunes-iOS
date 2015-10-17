@@ -9,10 +9,6 @@
 import UIKit
 import MobileCoreServices
 
-protocol ARImageChoiceViewNotifier {
-    func choiceMade()
-}
-
 extension Int {
     var degreesToRadians: CGFloat {
         return CGFloat(self) * CGFloat(M_PI) / 360.0
@@ -207,40 +203,5 @@ class ARPancakeButton: UIControl {
             
             self.menuVisible = false
         }
-    }
-}
-
-class ARImageChoiceView: UIView {
-    /* Properties */
-    var viewFromFile: UIView?,
-    registrationViewController: RegistrationViewController?
-    
-    @IBAction func uploadImage(sender: AnyObject) {
-        print("Choose Image")
-    }
-    
-    @IBAction func openCamera(sender: AnyObject) {
-        print("Open Camera")
-    }
-    
-    @IBAction func dismissSelf(sender: AnyObject) {
-        // The 'Close' Button was Tapped
-        self.registrationViewController!.dismissChoiceView()
-    }
-    
-    /* Methods */
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        // Add the View from 'ImageChoiceView.xib' as a Subview
-        if let viewFromXib = UINib(nibName: "ImageChoiceView", bundle: nil).instantiateWithOwner(self, options: nil)[0] as? UIView {
-            self.viewFromFile = viewFromXib
-            self.viewFromFile!.frame = self.frame
-            self.addSubview(self.viewFromFile!)
-        }
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
     }
 }
