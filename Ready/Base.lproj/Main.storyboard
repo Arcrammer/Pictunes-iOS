@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9058" systemVersion="15B30a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HgG-mh-DZL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="15B38b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="HgG-mh-DZL">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9048"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -221,15 +221,43 @@
                                     <constraint firstAttribute="height" constant="20" id="8J8-Nt-fMm"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5WN-S6-gQq">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="feedCell" id="xhJ-9l-UJ8">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xhJ-9l-UJ8" id="kDy-HF-Ydd">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RCv-ja-Dgb" id="QuA-Vp-bjB"/>
+                                    <outlet property="delegate" destination="RCv-ja-Dgb" id="3NB-ji-Qbv"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.14901960784313725" green="0.14901960784313725" blue="0.14901960784313725" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="5WN-S6-gQq" firstAttribute="leading" secondItem="AkO-0t-ILX" secondAttribute="leading" id="Eun-Q7-01I"/>
                             <constraint firstItem="KiO-2N-eWF" firstAttribute="leading" secondItem="AkO-0t-ILX" secondAttribute="leading" id="YaJ-t1-wR8"/>
                             <constraint firstAttribute="trailing" secondItem="KiO-2N-eWF" secondAttribute="trailing" id="gOp-q7-PD5"/>
+                            <constraint firstAttribute="trailing" secondItem="5WN-S6-gQq" secondAttribute="trailing" id="hel-37-Ijh"/>
+                            <constraint firstItem="YFM-D2-GTV" firstAttribute="top" secondItem="5WN-S6-gQq" secondAttribute="bottom" id="mKQ-XU-mMi"/>
                             <constraint firstItem="KiO-2N-eWF" firstAttribute="top" secondItem="AkO-0t-ILX" secondAttribute="top" id="nGZ-xU-Zs2"/>
+                            <constraint firstItem="5WN-S6-gQq" firstAttribute="top" secondItem="fZn-0w-aKF" secondAttribute="bottom" id="ycQ-YO-Eyw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="feedView" destination="5WN-S6-gQq" id="Nk7-oi-Ij9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Nbr-j3-DeJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

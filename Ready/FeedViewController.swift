@@ -8,9 +8,14 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    /* Outlets */
+    @IBOutlet weak var feedView: UITableView!
+    
     /* Properties */
     var darkBackground = true
+    var pictunes: Array<[String: AnyObject]>?
+    var pictuneCount = 0
     
     /* Methods */
     override func viewDidLoad() {
@@ -18,6 +23,8 @@ class FeedViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        self.fetchPictunes()
     }
     
     override func didReceiveMemoryWarning() {
@@ -32,5 +39,53 @@ class FeedViewController: UIViewController {
         } else {
             return UIStatusBarStyle.Default
         }
+    }
+    
+    func fetchPictunes() -> Bool {
+        // Get some pictunes
+        var morePictunesRetrieved = false
+        let prePictuneCount = self.pictuneCount
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/dashboard/")!)
+        request.addValue("65e073851bd5906ed016383f913db3d8320cbf45", forHTTPHeaderField: "X-Authorization")
+        NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
+            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            // The request for pictunes has completed
+            do {
+                // Try to serialise the JSON and store it
+                if let newPictunes = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? Array<[String: AnyObject]> {
+                    if self.pictuneCount == 0 {
+                        // Create the new pictunes
+                        self.pictunes = newPictunes
+                        self.pictuneCount = self.pictunes!.count
+                    } else {
+                        // Append the new pictunes
+                        self.pictunes? += newPictunes
+                    }
+                }
+            } catch let parseProb {
+                print(parseProb)
+            }
+            // Reload the feedView if more pictunes have loaded
+            if prePictuneCount < self.pictuneCount {
+                dispatch_async(dispatch_get_main_queue(), {
+                    () -> Void in
+                    // Reload the table view on the main thread
+                    self.feedView.reloadData()
+                })
+                morePictunesRetrieved = true
+            }
+        }).resume()
+        return morePictunesRetrieved
+    }
+    
+    /* UITableViewDataSource Methods */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "feedCell")
+        cell.textLabel!.text = String(self.pictunes![indexPath.row]["post_creator"]!)
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.pictuneCount
     }
 }
