@@ -16,16 +16,19 @@ extension Int {
 }
 
 class ARBottomLineField: UITextField {
+    /* Properties */
+    var bottomBorder = CALayer(),
+    borderWidth: CGFloat = 1.5
+    
+    /* Methods */
     required init!(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
         // Bottom Border
-        let textFieldBottomBorder = CALayer()
-        let borderWidth: CGFloat = 1.5
-        textFieldBottomBorder.borderColor = self.textColor!.CGColor
-        textFieldBottomBorder.frame = CGRectMake(0 - borderWidth, 0 - borderWidth, self.frame.size.width + borderWidth * 100, self.frame.size.height)
-        textFieldBottomBorder.borderWidth = borderWidth
-        self.layer.addSublayer(textFieldBottomBorder)
+        self.bottomBorder.borderColor = self.textColor!.CGColor
+        self.bottomBorder.frame = CGRectMake(0 - self.borderWidth, 0 - self.borderWidth, self.frame.size.width + self.borderWidth * 100, self.frame.size.height)
+        self.bottomBorder.borderWidth = self.borderWidth
+        self.layer.addSublayer(self.bottomBorder)
         self.layer.masksToBounds = true
         
         // Left Padding

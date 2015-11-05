@@ -18,6 +18,7 @@
 		114E74611BD2BF050098D630 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114E74601BD2BF050098D630 /* FeedViewController.swift */; };
 		115015331BD186F500920415 /* ImageChoiceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 115015321BD186F500920415 /* ImageChoiceView.xib */; };
 		116B55321BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116B55311BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift */; };
+		1177ADC01BEC040E009DDCF5 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1177ADBF1BEC040E009DDCF5 /* Keys.plist */; };
 		1180F69D1BCE9A6800408EE7 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		114E74601BD2BF050098D630 /* FeedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		115015321BD186F500920415 /* ImageChoiceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageChoiceView.xib; sourceTree = "<group>"; };
 		116B55311BD29D3E00D8B1A8 /* ForgottenPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgottenPasswordViewController.swift; sourceTree = "<group>"; };
+		1177ADBF1BEC040E009DDCF5 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		1180F69C1BCE9A6800408EE7 /* RegistrationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,6 +120,7 @@
 				113FD9721BD19897007E609C /* Assets.xcassets */,
 				1139A8371BCA9959004A0BCE /* LaunchScreen.storyboard */,
 				1139A83A1BCA9959004A0BCE /* Info.plist */,
+				1177ADBF1BEC040E009DDCF5 /* Keys.plist */,
 			);
 			path = Ready;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				115015331BD186F500920415 /* ImageChoiceView.xib in Resources */,
 				113FD9731BD19897007E609C /* Assets.xcassets in Resources */,
 				1139A8341BCA9959004A0BCE /* Main.storyboard in Resources */,
+				1177ADC01BEC040E009DDCF5 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

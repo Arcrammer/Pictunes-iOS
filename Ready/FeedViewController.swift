@@ -45,10 +45,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get some pictunes
         var morePictunesRetrieved = false
         let prePictuneCount = self.pictuneCount
-        let request = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/dashboard/")!)
-        request.addValue("65e073851bd5906ed016383f913db3d8320cbf45", forHTTPHeaderField: "X-Authorization")
+        let request = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/")!)
+        request.addValue("ff40ea8422f3687f57b3e345272f7dfd4de575f4", forHTTPHeaderField: "X-Authorization")
         NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
             (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            print(NSString(data: data!, encoding: NSUTF8StringEncoding)!)
             // The request for pictunes has completed
             do {
                 // Try to serialise the JSON and store it
