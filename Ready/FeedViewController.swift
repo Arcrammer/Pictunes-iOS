@@ -9,15 +9,16 @@
 import UIKit
 
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    /* Outlets */
+    // MARK: Outlets
     @IBOutlet weak var feedView: UITableView!
     
-    /* Properties */
-    var darkBackground = true
-    var pictunes: Array<[String: AnyObject]>?
-    var pictuneCount = 0
+    // MARK: Properties
+    var APIKey = "",
+    darkBackground = true,
+    pictunes: Array<[String: AnyObject]>?,
+    pictuneCount = 0
     
-    /* Methods */
+    // MARK: Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -79,7 +80,17 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return morePictunesRetrieved
     }
     
-    /* UITableViewDataSource Methods */
+    func fetchAPIKey() {
+        let keysPlist: NSDictionary?
+        if let keysPlistPath = NSBundle.mainBundle().pathForResource("Keys", ofType: "plist") {
+            keysPlist = NSDictionary(contentsOfFile: keysPlistPath)
+            if let keys = keysPlist {
+                self.APIKey = keys["API"] as! String
+            }
+        }
+    }
+    
+    // MARK: UITableViewDataSource Methods
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "feedCell")
         cell.textLabel!.text = String(self.pictunes![indexPath.row]["post_creator"]!)
