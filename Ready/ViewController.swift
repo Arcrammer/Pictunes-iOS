@@ -156,6 +156,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // TODO: Don't actually give every downloader access to the 'iAlexander' account
+        self.fullNameField.text = "iAlexander"
+        self.passwordField.text = "secret"
+        
         // Pancake Button
         addPancakeButton()
         
