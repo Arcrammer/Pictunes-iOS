@@ -25,80 +25,93 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
     
     // MARK: Actions
     @IBAction func authenticateUser(sender: AnyObject) {
-        // Log the user out in the event they've already logged in
-        self.deauthenticateUser(self)
-        
         // Fetch the API key
         self.fetchAPIKey()
         
-        // Send the credentials provided to the server
-        if var providedUsername = self.fullNameField.text, var providedPassword = self.passwordField.text {
-            // Trim whitespace from the input provided
-            providedUsername = providedUsername.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-            providedPassword = providedPassword.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        // Log the user out in the event they've already logged in
+        self.deauthenticateUser({
+            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
             
-            // Authenticate the User
-            if providedUsername != "" && providedPassword != "" {
+            // TODO: You should probably take all of this out of the
+            //   self.deauthenticateUser() closure. Logging the user
+            //   out before logging them back in is just for debugging
+            
+            // Send the credentials provided to the server
+            if var providedUsername = self.fullNameField.text, var providedPassword = self.passwordField.text {
+                // Trim whitespace from the input provided
+                providedUsername = providedUsername.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+                providedPassword = providedPassword.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
                 
-                // The user has provided both a username and a password
-                let authenticationRequest = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/auth/login")!)
-                authenticationRequest.setValue(self.APIKey, forHTTPHeaderField: "X-Authorization")
-                authenticationRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
-                authenticationRequest.HTTPMethod = "POST"
-                authenticationRequest.HTTPBody = "username=\(providedUsername)&password=\(providedPassword)".dataUsingEncoding(NSASCIIStringEncoding)
-                
-                // Send a request to authenticate the user
-                NSURLSession.sharedSession().dataTaskWithRequest(authenticationRequest, completionHandler: {
-                    (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                // Authenticate the User
+                if providedUsername != "" && providedPassword != "" {
                     
-                    print(NSString(data: data!, encoding: NSASCIIStringEncoding)!)
+                    // The user has provided both a username and a password
+                    let authenticationRequest = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/auth/login")!)
+                    authenticationRequest.setValue(self.APIKey, forHTTPHeaderField: "X-Authorization")
+                    authenticationRequest.cachePolicy = NSURLRequestCachePolicy.ReloadIgnoringCacheData
+                    authenticationRequest.HTTPMethod = "POST"
+                    authenticationRequest.HTTPBody = "username=\(providedUsername)&password=\(providedPassword)".dataUsingEncoding(NSASCIIStringEncoding)
                     
-                    // The request has loaded
-                    if let authenticationResponse = response as? NSHTTPURLResponse {
-                        if authenticationResponse.statusCode == 200 {
-                            // The user has successfully logged in
-                            print("Authenticated")
-                        } else if authenticationResponse.statusCode == 401 {
-                            // The credentials provided didn't match any users
-                            let loginProbAlert = UIAlertController(title: "Whoops", message: "Those credentials didn't work.", preferredStyle: .Alert)
-                            loginProbAlert.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
-                            
-                            dispatch_async(dispatch_get_main_queue(), {
-                                self.presentViewController(loginProbAlert, animated: true, completion: nil)
-                            })
+                    // Send a request to authenticate the user
+                    NSURLSession.sharedSession().dataTaskWithRequest(authenticationRequest, completionHandler: {
+                        (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                        
+                        print(NSString(data: data!, encoding: NSASCIIStringEncoding)!)
+                        
+                        // The request has loaded
+                        if let authenticationResponse = response as? NSHTTPURLResponse {
+                            if authenticationResponse.statusCode == 200 {
+                                // The user has successfully logged in
+                                print("Authenticated")
+                                
+                                // Store the response (It's JSON of the users' dashboard
+                                // pictunes) and send the user to the FeedViewController
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.performSegueWithIdentifier("feedViewSegue", sender: self)
+                                })
+                            } else if authenticationResponse.statusCode == 401 {
+                                // The credentials provided didn't match any users
+                                let loginProbAlert = UIAlertController(title: "Whoops", message: "Those credentials didn't work.", preferredStyle: .Alert)
+                                loginProbAlert.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
+                                
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    self.presentViewController(loginProbAlert, animated: true, completion: nil)
+                                })
+                            }
                         }
-                    }
+                        
+                        //                    if let responseData = data {
+                        //                        do {
+                        //                            // Try to serialise the JSON and store it for use later
+                        //                            if let responseJSON = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments) as? Array<[String: AnyObject]> {
+                        //                                // The user has logged in successfully. Remember this until they logout
+                        //                                self.pictunes = responseJSON
+                        //                                self.performSegueWithIdentifier("feedViewSegue", sender: "self")
+                        //                            }
+                        //                        } catch let parseProb {
+                        //                            // The user isn't logged in. The server didn't send any JSON
+                        //                            print(parseProb)
+                        //                        }
+                        //                    }
+                    }).resume()
+                } else {
+                    // TODO: One of the fields were left empty, so
+                    // we should make its' border red
                     
-//                    if let responseData = data {
-//                        do {
-//                            // Try to serialise the JSON and store it for use later
-//                            if let responseJSON = try NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions.AllowFragments) as? Array<[String: AnyObject]> {
-//                                // The user has logged in successfully. Remember this until they logout
-//                                self.pictunes = responseJSON
-//                                self.performSegueWithIdentifier("feedViewSegue", sender: "self")
-//                            }
-//                        } catch let parseProb {
-//                            // The user isn't logged in. The server didn't send any JSON
-//                            print(parseProb)
-//                        }
-//                    }
-                }).resume()
-            } else {
-                // TODO: One of the fields were left empty, so
-                // we should make its' border red
-                
-//                There's a bug that makes it really hard to do this, though.
-//                You'd think you can just do this:
-//                
-//                self.fullNameField.layer.borderColor = UIColor.redColor().CGColor
-//                
-//                But this isn't enough. I've noticed however, that you can add like
-//                2.5 to self.fullNameField.layer.borderWidth and the red shows, but
-//                that initial bottom border is still there and I can't change its'
-//                colour. I've tried putting that line on the main queue and all.
-                
+                    //                There's a bug that makes it really hard to do this, though.
+                    //                You'd think you can just do this:
+                    //                
+                    //                self.fullNameField.layer.borderColor = UIColor.redColor().CGColor
+                    //                
+                    //                But this isn't enough. I've noticed however, that you can add like
+                    //                2.5 to self.fullNameField.layer.borderWidth and the red shows, but
+                    //                that initial bottom border is still there and I can't change its'
+                    //                colour. I've tried putting that line on the main queue and all.
+                    
+                }
             }
-        }
+        })
+        
     }
     
     @IBAction func liftView(sender: AnyObject) {
@@ -233,12 +246,10 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
         self.updateViewConstraints()
     }
     
-    func deauthenticateUser(sender: AnyObject) {
+    func deauthenticateUser(onCompletion: ((data: NSData?, response: NSURLResponse?, error: NSError?) -> (Void))? = nil) {
         let deauthRequest = NSURLRequest(URL: NSURL(string: "http://api.pictunes.dev/auth/logout")!)
-        NSURLSession.sharedSession().dataTaskWithRequest(deauthRequest, completionHandler: {
-            (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
-            print("Deauthenticated")
-        }).resume()
+        NSURLSession.sharedSession().dataTaskWithRequest(deauthRequest, completionHandler: onCompletion!).resume()
+        print("Deauthenticated")
     }
     
     func toggleMenuVisibility() {

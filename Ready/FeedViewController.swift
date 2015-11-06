@@ -25,6 +25,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view.
         self.setNeedsStatusBarAppearanceUpdate()
         
+        // Bring a few pictunes from the pictuners the user
+        // follows to the application and show them
         self.fetchPictunes()
     }
     
@@ -50,10 +52,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         request.addValue("ff40ea8422f3687f57b3e345272f7dfd4de575f4", forHTTPHeaderField: "X-Authorization")
         NSURLSession.sharedSession().dataTaskWithRequest(request, completionHandler: {
             (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+            // The server has sent a response
             print(NSString(data: data!, encoding: NSUTF8StringEncoding)!)
-            // The request for pictunes has completed
+            
+            // Try to serialise the JSON and store it in 'self.pictunes'
             do {
-                // Try to serialise the JSON and store it
                 if let newPictunes = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? Array<[String: AnyObject]> {
                     if self.pictuneCount == 0 {
                         // Create the new pictunes
@@ -65,12 +68,14 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 }
             } catch let parseProb {
-                print(parseProb)
+                print("There was a problem parsing the JSON: ", parseProb)
             }
+            
             // Reload the feedView if more pictunes have loaded
             if prePictuneCount < self.pictuneCount {
                 dispatch_async(dispatch_get_main_queue(), {
                     () -> Void in
+                    
                     // Reload the table view on the main thread
                     self.feedView.reloadData()
                 })
@@ -93,11 +98,22 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // MARK: UITableViewDataSource Methods
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "feedCell")
-        cell.textLabel!.text = String(self.pictunes![indexPath.row]["post_creator"]!)
-        return cell
+        if self.pictuneCount > 0 {
+            // There are some pictunes to show
+            cell.textLabel!.text = String(self.pictunes![indexPath.row]["poster_username"]!)
+            return cell
+        } else {
+            // No pictunes have loaded yet
+            cell.textLabel!.text = "No Pictunes Available Yet"
+            return cell
+        }
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.pictuneCount
+        if let amountOfPictunesAvailable = self.pictunes?.count {
+            return amountOfPictunesAvailable
+        } else {
+            return 0
+        }
     }
 }
