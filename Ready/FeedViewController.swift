@@ -17,7 +17,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     darkBackground = true,
     pictunes: Array<[String: AnyObject]>?,
     pictuneImages: Array<UIImage> = [],
-    pictuneCount = 0
+    pictuneCount = 0,
+    pictuneCells: Array<UITableViewCell> = []
     
     // MARK: Methods
     override func viewDidLoad() {
@@ -124,7 +125,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }).resume()
-        
+        self.feedView.reloadData()
         return morePictunesRetrieved
     }
     
@@ -140,23 +141,26 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // MARK: UITableViewDataSource Methods
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "feedCell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("feedCell")!
         
         if self.pictunes?.count > 0 {
             // There are some pictunes to show; Create and update the image
             if self.pictuneImages.count > indexPath.row {
-                let pictuneImage = self.pictuneImages[indexPath.row]
+//                let pictuneImage = self.pictuneImages[indexPath.row]
+                
                 // We have an image for the pictune at the current post
-                let pictuneImageView = UIImageView(frame: CGRectMake(cell.frame.origin.x, cell.frame.origin.y, UIScreen.mainScreen().bounds.size.width, pictuneImage.size.height))
-                pictuneImageView.image = pictuneImage
-                pictuneImageView.contentMode = .ScaleAspectFill
-                cell.addSubview(pictuneImageView)
+                if let imageView = cell.contentView.viewWithTag(1) as? UIImageView {
+                    imageView.image = UIImage(named: "CasCornelissen")
+                    
+                }
             }
+            self.pictuneCells.append(cell)
             return cell
         } else {
             // No pictunes have loaded yet; We probably need more time
             // to load the image and audio assets for some of them
             cell.textLabel!.text = "No Pictunes Available Yet"
+            self.pictuneCells.append(cell)
             return cell
         }
     }
@@ -169,12 +173,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if self.pictuneImages.count > indexPath.row {
-            return self.pictuneImages[indexPath.row].size.height
-        } else {
-            // 44 is the default
-            return 44
-        }
+    func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 280.0
     }
 }
