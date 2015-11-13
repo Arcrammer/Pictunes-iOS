@@ -17,8 +17,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     darkBackground = true,
     pictunes: Array<[String: AnyObject]>?,
     pictuneImages: Array<UIImage> = [],
-    pictuneCount = 0,
-    pictuneCells: Array<UITableViewCell> = []
+    pictuneCount = 0
     
     // MARK: Methods
     override func viewDidLoad() {
@@ -26,6 +25,11 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Do any additional setup after loading the view.
         self.setNeedsStatusBarAppearanceUpdate()
+        
+        // Make the bounce area dark gray
+        let feedTableViewBackground = UIView(frame: self.feedView.frame)
+        feedTableViewBackground.backgroundColor = UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1)
+        self.feedView.backgroundView = feedTableViewBackground
         
         // Get the API key
         self.fetchAPIKey()
@@ -125,7 +129,6 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }).resume()
-        self.feedView.reloadData()
         return morePictunesRetrieved
     }
     
@@ -150,17 +153,15 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 // We have an image for the pictune at the current post
                 if let imageView = cell.contentView.viewWithTag(1) as? UIImageView {
-                    imageView.image = UIImage(named: "CasCornelissen")
+                    imageView.image = UIImage(named: "Logo")
                     
                 }
             }
-            self.pictuneCells.append(cell)
             return cell
         } else {
             // No pictunes have loaded yet; We probably need more time
             // to load the image and audio assets for some of them
             cell.textLabel!.text = "No Pictunes Available Yet"
-            self.pictuneCells.append(cell)
             return cell
         }
     }
