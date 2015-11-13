@@ -16,6 +16,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var APIKey = "",
     darkBackground = true,
     pictunes: Array<[String: AnyObject]>?,
+    pictunerImages: Array<UIImage> = [],
     pictuneImages: Array<UIImage> = [],
     pictuneCount = 0
     
@@ -91,7 +92,25 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     pictune["index"] = index
                     index++
                     
-                    // Get the image
+                    // Get the pictuner image
+                    let pictunerImageRequest = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/pictuner/selfie/\(index)")!)
+                    pictunerImageRequest.setValue(self.APIKey, forHTTPHeaderField: "X-Authorization")
+                    NSURLSession.sharedSession().dataTaskWithRequest(pictunerImageRequest, completionHandler: {
+                        (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                        
+                        // Add the pictuner image
+                        if let imageData = data {
+                            if let image = UIImage(data: imageData) {
+                                self.pictunerImages.append(image)
+                            } else {
+                                self.pictunerImages.append(UIImage(named: "Logo")!)
+                            }
+                        } else {
+                            self.pictunerImages.append(UIImage(named: "Logo")!)
+                        }
+                    }).resume()
+                    
+                    // Get the pictune image
                     let pictuneImageRequest = NSMutableURLRequest(URL: NSURL(string: "http://api.pictunes.dev/pictune/image/\(index)")!)
                     pictuneImageRequest.setValue(self.APIKey, forHTTPHeaderField: "X-Authorization")
                     NSURLSession.sharedSession().dataTaskWithRequest(pictuneImageRequest, completionHandler: {
@@ -100,7 +119,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         // Add the pictune image
                         self.pictuneImages.append(UIImage(data: data!)!)
                         
-                        // Reload the feed view now that we have the image
+                        // Reload the feed view now that we have the images
                         dispatch_async(dispatch_get_main_queue(), {
                             self.feedView.reloadData()
                         })
@@ -147,13 +166,17 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCellWithIdentifier("feedCell")!
         
         if self.pictunes?.count > 0 {
-            // There are some pictunes to show; Create and update the image
+            // There are some pictunes to show; Create and update the posts
             if self.pictuneImages.count > indexPath.row {
-//                let pictuneImage = self.pictuneImages[indexPath.row]
                 
-                // We have an image for the pictune at the current post
-                if let imageView = cell.contentView.viewWithTag(1) as? UIImageView {
-                    imageView.image = UIImage(named: "Logo")
+                // We have an image for the user who made the current pictune
+                if let pictunerImageView = cell.contentView.viewWithTag(2) as? UIImageView {
+                    pictunerImageView.image = self.pictunerImages[0]
+                }
+                
+                // We also have an image for the pictune at the current post
+                if let pictuneImageView = cell.contentView.viewWithTag(1) as? UIImageView {
+                    pictuneImageView.image = self.pictuneImages[indexPath.row]
                     
                 }
             }

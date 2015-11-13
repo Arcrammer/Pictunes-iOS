@@ -77,6 +77,8 @@ class ViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate
                                 dispatch_async(dispatch_get_main_queue(), {
                                     self.presentViewController(loginProbAlert, animated: true, completion: nil)
                                 })
+                            } else {
+                                print("Something weird happened")
                             }
                         }
                         
