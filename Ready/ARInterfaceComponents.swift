@@ -49,7 +49,7 @@ class ARButton: UIButton {
         self.idleColour = self.titleColorForState(UIControlState.Normal)
         
         // Draw Border
-        self.layer.cornerRadius = 17.5
+        self.layer.cornerRadius = 32.5
         self.layer.borderWidth = 1.5
         self.layer.borderColor = self.idleColour?.CGColor
         

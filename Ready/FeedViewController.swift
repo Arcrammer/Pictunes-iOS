@@ -8,6 +8,10 @@
 
 import UIKit
 
+enum APIError: ErrorType {
+    case APIKeyMissingOrInvalid
+}
+
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: Outlets
     @IBOutlet weak var feedView: UITableView!
@@ -71,6 +75,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // the JSON and store it in 'self.pictunes'
             do {
                 if let newPictunes = try NSJSONSerialization.JSONObjectWithData(data!, options: NSJSONReadingOptions.AllowFragments) as? Array<[String: AnyObject]> {
+                    
+                    // Make sure the JSON doesnt say GEN-Unauthorised in that one key
+                    
                     if self.pictuneCount == 0 {
                         // Create the new pictunes
                         self.pictunes = newPictunes
@@ -79,9 +86,19 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         // Append the new pictunes
                         self.pictunes? += newPictunes
                     }
+                } else {
+                    // There wasn't Pictune data in the
+                    // response. The most likely case is
+                    // that the developer either has an
+                    // old API key or is missing it in
+                    // 'Keys.plist'. Go to the server
+                    // and look at the 'api_keys' table
+                    // if you're missing it, then set it
+                    // here in 'Keys.plist'
+                    throw APIError.APIKeyMissingOrInvalid
                 }
-            } catch let parseProb {
-                print("There was a problem parsing the JSON: ", parseProb)
+            } catch let prob {
+                print("There was a problem connecting to the API:", prob)
             }
             
             // Fetch the images for each pictune
