@@ -188,7 +188,7 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 // We have an image for the user who made the current pictune
                 if let pictunerImageView = cell.contentView.viewWithTag(2) as? UIImageView {
-                    pictunerImageView.layer.cornerRadius = 17.5 // Cut it to a circle
+                    pictunerImageView.layer.cornerRadius = pictunerImageView.frame.size.height * 0.5 // Cut it to a circle
                     pictunerImageView.layer.masksToBounds = true
                     pictunerImageView.image = self.pictunerImages[0]
                 }
