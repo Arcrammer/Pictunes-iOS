@@ -1,0 +1,10 @@
+PODS:
+  - KYGooeyMenu (1.0.5)
+
+DEPENDENCIES:
+  - KYGooeyMenu (~> 1.0.5)
+
+SPEC CHECKSUMS:
+  KYGooeyMenu: 3d9f3504b59a5dd1b6c4ff34a06836284647a2aa
+
+COCOAPODS: 0.39.0

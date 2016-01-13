@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KYGooeyMenu
 
 enum APIError: ErrorType {
     case APIKeyMissingOrInvalid
@@ -15,12 +16,13 @@ enum APIError: ErrorType {
 class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     // MARK: Outlets
     @IBOutlet weak var feedView: UITableView!
+    @IBOutlet weak var bottomBar: UIView!
     
     // MARK: Properties
     var APIKey = "",
     darkBackground = true,
     pictunes: Array<[String: AnyObject]>?,
-    pictunerImages: Array<UIImage> = [],
+    pictunerImages: Array<UIImage?> = [],
     pictuneImages: Array<UIImage> = [],
     pictuneCount = 0
     
@@ -35,6 +37,35 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let feedTableViewBackground = UIView(frame: self.feedView.frame)
         feedTableViewBackground.backgroundColor = UIColor(red: 38/255, green: 38/255, blue: 38/255, alpha: 1)
         self.feedView.backgroundView = feedTableViewBackground
+        
+        // Apply a border to the bottom bar
+        let topBottomBarBorder = CALayer()
+        topBottomBarBorder.frame = CGRectMake(0, 0, self.bottomBar.frame.size.width, self.bottomBar.frame.size.height / 15)
+        topBottomBarBorder.backgroundColor = UIColor(red: 54 / 255, green: 54 / 255, blue: 54 / 255, alpha: 1).CGColor
+        self.bottomBar.layer.addSublayer(topBottomBarBorder)
+        
+        // Create a KYGooeyMenu for the bottom bar
+        let gooeyMenuOrigin = CGPointMake(CGRectGetMidX(self.view.frame) - 45, CGRectGetMaxY(self.view.frame) - 75)
+        let gooeyMenuColour = UIColor(red: 217 / 255, green: 26 / 255, blue: 42 / 255, alpha: 1)
+        let gooeyMenu = KYGooeyMenu(origin: gooeyMenuOrigin, andDiameter: 90, andDelegate: self, themeColor: gooeyMenuColour)
+        
+        // Gooey menu preferences
+        gooeyMenu.MenuCount = 3
+        
+//        These are loading as nil.
+//        
+//        gooeyMenu.menuImagesArray = NSMutableArray(objects: [
+//            UIImage(named: "Logo")!,
+//            UIImage(named: "Logo")!,
+//            UIImage(named: "Logo")!
+//        ], count: 3)
+        
+        // Add the lighter border
+        gooeyMenu.mainView.layer.borderColor = UIColor(red: 192 / 255, green: 23 / 255, blue: 37 / 255, alpha: 1).CGColor
+        gooeyMenu.mainView.layer.borderWidth = 3.5
+        
+        // Add it to the view
+        self.view.addSubview(gooeyMenu)
         
         // Get the API key
         self.fetchAPIKey()
@@ -132,6 +163,8 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     pictuneImageRequest.setValue(self.APIKey, forHTTPHeaderField: "X-Authorization")
                     NSURLSession.sharedSession().dataTaskWithRequest(pictuneImageRequest, completionHandler: {
                         (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void in
+                        // Check for probs
+                        print(String(data: data!, encoding: NSUTF8StringEncoding))
                         
                         // Add the pictune image
                         self.pictuneImages.append(UIImage(data: data!)!)
@@ -190,7 +223,9 @@ class FeedViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 if let pictunerImageView = cell.contentView.viewWithTag(2) as? UIImageView {
                     pictunerImageView.layer.cornerRadius = pictunerImageView.frame.size.height * 0.5 // Cut it to a circle
                     pictunerImageView.layer.masksToBounds = true
-                    pictunerImageView.image = self.pictunerImages[0]
+                    if self.pictunerImages.count >= 1 {
+                        pictunerImageView.image = self.pictunerImages[0]
+                    }
                 }
                 
                 // We also have an image for the pictune at the current post
